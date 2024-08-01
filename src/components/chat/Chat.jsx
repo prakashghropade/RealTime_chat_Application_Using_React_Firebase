@@ -23,7 +23,7 @@ const Chat = () => {
 
   useEffect(() => {
        ednRef.current?.scrollIntoView({behavior:"smooth"});
-  }, [])
+  }, [chat])
 
   useEffect(() => {
       const unsub = onSnapshot(doc (db, "chats", chatId), (res) => {

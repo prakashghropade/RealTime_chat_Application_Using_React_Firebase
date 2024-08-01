@@ -30,6 +30,8 @@ const Login = () => {
     setLoadingr(true);
     const formData = new FormData(e.target);
 
+    console.log("Formdata", formData);
+
     const {username, email, password} = Object.fromEntries(formData);
     
     try{
@@ -52,10 +54,17 @@ const Login = () => {
       await setDoc(doc(db, "userchats", response.user.uid), {
         chats: [],
       })
-    
-      toast.success("Account crreated! You can login now");
-      
+       
 
+      toast.success("Account crreated! You can login now");
+      const form = e.target;
+
+      const inputs = form.querySelectorAll('input, select, textarea');
+
+            inputs.forEach(input => {
+             input.value = '';
+          });
+      
     }
     catch(error){
            console.log(error);
